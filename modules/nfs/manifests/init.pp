@@ -1,4 +1,8 @@
-class nfs ($nfshost="",$shared="/tmp/shared", $local="/tmp/local"){
+class nfs ( $nfshost="",
+            $shared="/tmp/shared",
+            $local="/tmp/local",
+            $options="default" 
+             ){
   package { 'nfs-common':
     ensure => installed,
   }
@@ -7,7 +11,7 @@ class nfs ($nfshost="",$shared="/tmp/shared", $local="/tmp/local"){
     device  => "$nfshost:$shared",
     fstype  => "nfs",
     ensure  => "mounted",
-    options => "rw,nfsvers=3,hard,intr,async,noatime,nodev,nosuid,auto,rsize=32768,wsize=32768",
+    options => "$options",
     atboot  => true,
     require => [Package['nfs-common'],File["$local"]]
   }
