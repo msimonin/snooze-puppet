@@ -1,7 +1,7 @@
 class nfs ( $nfshost="",
             $shared="/tmp/shared",
             $local="/tmp/local",
-            $options="default" 
+            $options="defaults" 
              ){
   package { 'nfs-common':
     ensure => installed,
