@@ -7,6 +7,10 @@ class snoozenode($type                      = "bootstrap",
                  $virtualMachineSubnet      ="192.168.122.0/24",
                  $externalNotificationHost  ="localhost") {
   
+  require 'java'
+  require 'libvirt'
+  require 'zookeeper'
+
 
 	user { 'snoozeadmin':
 		ensure => "present",

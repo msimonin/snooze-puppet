@@ -1,7 +1,4 @@
  import "./common.pp"
- include "libvirt"
- include "zookeeper"
- include "java"
  include "snoozeclient"
 
 $groupManagerHeartbeatPort = 1000+$idfromhost
