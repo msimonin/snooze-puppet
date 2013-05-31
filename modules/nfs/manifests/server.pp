@@ -1,5 +1,4 @@
 class nfs::server ($shared="", $uid="root", $gid="root") {
-G
   package { 'nfs-kernel-server':
     ensure => installed,
   }
