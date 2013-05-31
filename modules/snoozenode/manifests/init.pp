@@ -64,10 +64,4 @@ class snoozenode($type                      = "bootstrap",
 		require => Package["snoozenode"],
 	}
 
-#  service {'snoozenode':
-#          ensure => running,
-#	  enable => true,
-#	  subscribe => [File['snooze_node.cfg']],
-#          require => [Package['snoozenode'],User['snoozeadmin'],Group['snooze']]
-#	}
 }

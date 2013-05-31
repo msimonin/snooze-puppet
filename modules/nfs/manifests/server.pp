@@ -1,4 +1,6 @@
 class nfs::server ($shared="", $uid="root", $gid="root") {
+  require 'stdlib'
+
   package { 'nfs-kernel-server':
     ensure => installed,
   }
@@ -18,11 +20,18 @@ class nfs::server ($shared="", $uid="root", $gid="root") {
   }
 
 
-  file {
-    '/etc/exports':
-       ensure  => file,
-       content => "$shared *(rw,async,no_subtree_check,no_root_squash)",
-       require => File["$shared"],
-       notify => Service['nfs-kernel-server'],
-  }    
+#  file {
+#    '/etc/exports':
+#       ensure  => file,
+#       content => "$shared *(rw,async,no_subtree_check,no_root_squash)",
+#       require => File["$shared"],
+#       notify => Service['nfs-kernel-server'],
+#  }
+    
+  file_line { "shared_line":
+    line => "$shared *(rw,async,no_subtree_check,no_root_squash)",
+    path => '/etc/exports',
+    notify => Service['nfs-kernel-server'],
+  }
+
 } 
