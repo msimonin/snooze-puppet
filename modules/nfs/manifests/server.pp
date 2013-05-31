@@ -1,5 +1,5 @@
-class nfs::server ($shared="") {
-
+class nfs::server ($shared="", $uid="root", $gid="root") {
+G
   package { 'nfs-kernel-server':
     ensure => installed,
   }
@@ -14,8 +14,8 @@ class nfs::server ($shared="") {
   file {
     "$shared":
     ensure => directory,
-    owner => "snoozeadmin",
-    group => "snooze",
+    owner => $uid,
+    group => $gid,
   }
 
 
