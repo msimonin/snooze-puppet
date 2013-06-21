@@ -23,3 +23,8 @@ rabbitmq_plugin {'rabbitmq_stomp':
   provider => 'rabbitmqplugins',
 }
 
+rabbitmq_plugin {'rabbitmq_management':
+  ensure => present,
+  provider => 'rabbitmqplugins',
+}
+
