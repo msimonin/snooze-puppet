@@ -18,3 +18,8 @@ rabbitmq_user_permissions { 'snooze@snooze-vhost':
   provider => 'rabbitmqctl',
 }
 
+rabbitmq_plugin {'rabbitmq_stomp':
+  ensure => present,
+  provider => 'rabbitmqplugins',
+}
+
