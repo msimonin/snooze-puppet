@@ -1,0 +1,11 @@
+repos:
+  repo_paths:
+    # snooze middleware
+    git://github.com/puppetlabs/puppetlabs-rabbitmq: rabbitmq 
+
+    # other
+    git://github.com/puppetlabs/puppetlabs-stdlib: stdlib 
+
+  to_checkout:
+    rabbitmq: master
+    stdlib: 3.x

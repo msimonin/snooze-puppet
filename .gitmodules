@@ -1,6 +1,0 @@
-[submodule "modules/rabbitmq"]
-	path = modules/rabbitmq
-	url = https://github.com/puppetlabs/puppetlabs-rabbitmq.git
-[submodule "modules/stdlib"]
-	path = modules/stdlib
-	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
