@@ -5,7 +5,9 @@ repos:
 
     # other
     http://github.com/puppetlabs/puppetlabs-stdlib: stdlib 
+    http://github.com/puppetlabs/puppetlabs-apt: apt 
 
   to_checkout:
     rabbitmq: master
     stdlib: 3.x
+    apt: master
