@@ -8,6 +8,6 @@ repos:
     http://github.com/puppetlabs/puppetlabs-apt: apt 
 
   to_checkout:
-    rabbitmq: master
+    rabbitmq: 2.x
     stdlib: 3.x
-    apt: master
+    apt: 1.1.1
