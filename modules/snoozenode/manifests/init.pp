@@ -5,7 +5,11 @@ class snoozenode($type                      = "bootstrap",
                  $groupManagerHeartbeatPort = 9000, 
                  $zookeeperHosts            ="localhost",
                  $virtualMachineSubnet      ="192.168.122.0/24",
-                 $externalNotificationHost  ="localhost") {
+                 $externalNotificationHost  ="localhost",
+                 $databaseType              = "memory",
+                 $databaseCassandraHosts    = "localhost:9160"
+                 )
+                 {
   
   require 'java'
   require 'libvirt'

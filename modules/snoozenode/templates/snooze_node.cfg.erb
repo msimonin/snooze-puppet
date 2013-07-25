@@ -78,7 +78,9 @@ faultTolerance.heartbeat.timeout = 10000
 
 ################## Database ####################
 # Database type (only in-memory supported for now)
-database.type = memory
+database.type = <%= @databaseType %>
+
+database.cassandra.hosts = <% @databaseCassandraHosts.each do |server| -%> <%= server %>:9160, <% end -%>
 
 # Maximum number of monitoring entries to keep per group manager
 database.numberOfEntriesPerGroupManager = 20
