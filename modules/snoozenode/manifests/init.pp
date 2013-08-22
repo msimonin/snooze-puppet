@@ -7,7 +7,9 @@ class snoozenode($type                      = "bootstrap",
                  $virtualMachineSubnet      ="192.168.122.0/24",
                  $externalNotificationHost  ="localhost",
                  $databaseType              = "memory",
-                 $databaseCassandraHosts    = "localhost:9160"
+                 $databaseCassandraHosts    = "localhost:9160",
+                 $migrationMethod           = "live",
+                 $migrationTimeout          = 60
                  )
                  {
   

@@ -58,10 +58,10 @@ hypervisor.transport = tcp
 hypervisor.port = 16509
 
 # Migration method (live, nonsharedfull, nosharedincremental)
-hypervisor.migration.method = nosharedincremental
+hypervisor.migration.method = <%= @migrationMethod %>
 
 # Migration convergence timeout (= sec)
-hypervisor.migration.timeout = 60
+hypervisor.migration.timeout = <%= @migrationTimeout %>
 
 ################### Fault tolerance ###############
 # Comma separated list of zookeeper host:port pairs
