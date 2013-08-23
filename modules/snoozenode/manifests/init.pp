@@ -9,7 +9,10 @@ class snoozenode($type                      = "bootstrap",
                  $databaseType              = "memory",
                  $databaseCassandraHosts    = "localhost:9160",
                  $migrationMethod           = "live",
-                 $migrationTimeout          = 60
+                 $migrationTimeout          = 60,
+                 $reconfigurationEnabled    = false,
+                 $reconfigurationPolicy     = "Sercon",
+                 $reconfigurationInterval   = "0 0/1 *  * * ?"
                  )
                  {
   

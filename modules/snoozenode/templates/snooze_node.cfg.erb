@@ -147,13 +147,13 @@ groupManagerScheduler.relocation.overloadPolicy = GreedyOverloadRelocation
 groupManagerScheduler.relocation.underloadPolicy = GreedyUnderloadRelocation
 
 # Enable/disable periodic reconfiguration
-groupManagerScheduler.reconfiguration.enabled = false
+groupManagerScheduler.reconfiguration.enabled = <%= @reconfigurationEnabled %>
 
 # Reconfiguration policy
-groupManagerScheduler.reconfiguration.policy = Sercon
+groupManagerScheduler.reconfiguration.policy = <%= @reconfigurationPolicy %>
 
 # Reconfiguration interval (= cron expression)
-groupManagerScheduler.reconfiguration.interval = 0 0/1 *  * * ?
+groupManagerScheduler.reconfiguration.interval = <%= @reconfigurationInterval %>
 
 ################## Submission settings ####################
 # Number of retries and interval (= sec) for VM dispatching
