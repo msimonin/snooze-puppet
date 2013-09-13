@@ -171,13 +171,13 @@ submission.packingDensity.network = 1
 
 ################### Energy management ####################
 # Enable / disable the energy saving features 
-energyManagement.enabled = false 
+energyManagement.enabled = <%= @energyManagementEnabled %>
 
 # The minimal amount of compute nodes (LCs) to keep on
 energyManagement.numberOfReservedNodes = 1
 
 # Power saving action to execute (shutdown, suspendToRam, suspendToDisk, suspendToBoth)
-energyManagement.powerSavingAction = shutdown
+energyManagement.powerSavingAction = <%= @energyManagementPowerSavingAction %> 
 
 # Shutdown driver (system, IPMI, test)
 energyManagement.drivers.shutdown = system
@@ -186,21 +186,21 @@ energyManagement.drivers.shutdown = system
 energyManagement.drivers.suspend = pmutils
 
 # Wakeup driver (IPMI, WOL, kapower3, test)
-energyManagement.drivers.wakeup = IPMI
+energyManagement.drivers.wakeup = kapower3
 
 # Wakeup driver specific options 
 # For IPMI
-energyManagement.drivers.wakeup.options = -I lanplus -H BMC_IP -U user -P password
+#energyManagement.drivers.wakeup.options = -I lanplus -H BMC_IP -U user -P password
 # For WOL
 # energyManagement.drivers.wakeup.options = MAC_ADDRESS
 # For kapower3
-# energyManagement.drivers.wakeup.options = -m HOST_NAME
+energyManagement.drivers.wakeup.options = -m <%= @fqdn %>
 
 # The idle time threshold above which the specified power saving action is performed (= sec)
-energyManagement.thresholds.idleTime = 120
+energyManagement.thresholds.idleTime = <%= @energyManagementIdleTime %>
 
 # The wake up threshold specifies how long to wait until node is considered wokenup (= sec)
-energyManagement.thresholds.wakeupTime = 300
+energyManagement.thresholds.wakeupTime = <%= @energyManagementThresholdsWakeupTime %>
 
 # The power management command execution timeout (= sec)
 energyManagement.commandExecutionTimeout = 10

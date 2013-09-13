@@ -9,28 +9,28 @@ class kadeploy3 {
     ensure => "directory",
   }
 
-  file { "/opt/kadeploy3/kadeploy-common-3.1.5.3.deb":
+  file { "/opt/kadeploy3/kadeploy-common.deb":
     ensure  => present,
     owner   => root,
     group   => root,
     mode    => 644,
-    source  => "puppet:///modules/kadeploy3/kadeploy-common-3.1.5.3.deb",
+    source  => "puppet:///modules/kadeploy3/kadeploy-common.deb",
     require => File['/opt/kadeploy3'],
   }
 
-  file { "/opt/kadeploy3/kadeploy-client-3.1.5.3.deb":
+  file { "/opt/kadeploy3/kadeploy-client.deb":
     ensure  => present,
     owner   => root,
     group   => root,
     mode    => 644,
-    source  => "puppet:///modules/kadeploy3/kadeploy-client-3.1.5.3.deb",
+    source  => "puppet:///modules/kadeploy3/kadeploy-client.deb",
     require => File['/opt/kadeploy3'],
   }
 
   package {'kadeploy-common':
     provider => dpkg,
-    source  => "/opt/kadeploy3/kadeploy-common-3.1.5.3.deb",
-    require => [File["/opt/kadeploy3/kadeploy-common-3.1.5.3.deb"],
+    source  => "/opt/kadeploy3/kadeploy-common.deb",
+    require => [File["/opt/kadeploy3/kadeploy-common.deb"],
                 Package[$dep]],
     before => Exec["apt-fix"]
   }
@@ -40,8 +40,8 @@ class kadeploy3 {
 
   package {'kadeploy-client':
     provider => dpkg,
-    source  => "/opt/kadeploy3/kadeploy-client-3.1.5.3.deb",
-    require => [File["/opt/kadeploy3/kadeploy-client-3.1.5.3.deb"],Package["kadeploy-common"]],
+    source  => "/opt/kadeploy3/kadeploy-client.deb",
+    require => [File["/opt/kadeploy3/kadeploy-client.deb"],Package["kadeploy-common"]],
     before => Exec["apt-fix"]
   }
   

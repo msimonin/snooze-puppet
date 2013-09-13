@@ -1,1 +1,9 @@
-snoozeadmin ALL=(ALL) NOPASSWD:/sbin/shutdown
+snoozeadmin ALL = NOPASSWD: /usr/bin/kapower3
+snoozeadmin ALL = NOPASSWD: /sbin/shutdown                       
+snoozeadmin ALL = NOPASSWD: /usr/bin/ipmitool
+snoozeadmin ALL = NOPASSWD: /usr/sbin/pm-suspend
+snoozeadmin ALL = NOPASSWD: /usr/sbin/pm-hibernate
+snoozeadmin ALL = NOPASSWD: /usr/sbin/pm-suspend-hybrid
+snoozeadmin ALL = NOPASSWD: /usr/sbin/s2ram
+snoozeadmin ALL = NOPASSWD: /usr/sbin/s2disk
+snoozeadmin ALL = NOPASSWD: /usr/sbin/s2both
