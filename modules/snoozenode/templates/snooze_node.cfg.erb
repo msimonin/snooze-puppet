@@ -137,8 +137,11 @@ groupLeaderScheduler.assignmentPolicy = RoundRobin
 groupLeaderScheduler.dispatchingPolicy = RoundRobin
 
 ################## Group manager scheduler ###################
-# Placement policy (FirstFit, RoundRobin)
-groupManagerScheduler.placementPolicy = RoundRobin
+# Plugins directory
+groupManagerScheduler.pluginsDirectory = <%= @groupManagerSchedulerPluginsDirectory %> 
+
+# Placement policy (FirstFit, RoundRobin, custom :from 2.0 )
+groupManagerScheduler.placementPolicy = <%= @placementPolicy %>
 
 # Overload relocation policy
 groupManagerScheduler.relocation.overloadPolicy = GreedyOverloadRelocation
