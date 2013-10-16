@@ -1,9 +1,9 @@
 class java{
-   package { 'openjdk-6-jre':
+   package { 'openjdk-7-jre':
      ensure => installed,
    }
 
-   package { 'openjdk-6-jdk':
+   package { 'openjdk-7-jdk':
      ensure => installed,
    }
 }
