@@ -76,6 +76,11 @@ faultTolerance.heartbeat.interval = 3000
 # Heartbeat timeout (= ms)
 faultTolerance.heartbeat.timeout = 10000
 
+#### images repository ###########
+
+imageRepository.address = <%=zookeeperHostS.first %>
+imageRepository.port = 4000
+
 ################## Database ####################
 # Database type (only in-memory supported for now)
 database.type = <%= @databaseType %>
