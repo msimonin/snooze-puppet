@@ -16,7 +16,7 @@ class snoozeclient(){
 	package { 'snoozeclient':
 	  provider => dpkg,
 	  source  => "/opt/snoozenode/snoozeclient.deb",
-	  require => [File["/opt/snoozenode/snoozeclient.deb"],Package["openjdk-6-jre"]],
+	  require => [File["/opt/snoozenode/snoozeclient.deb"],Package["openjdk-7-jre"]],
   }
 
 }

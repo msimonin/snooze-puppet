@@ -74,7 +74,7 @@ class snoozenode(
   package { 'snoozenode':
     provider => dpkg,
     source  => "/opt/snoozenode/snoozenode.deb",
-    require => [File["/opt/snoozenode/snoozenode.deb"],Package["openjdk-6-jre"]],
+    require => [File["/opt/snoozenode/snoozenode.deb"],Package["openjdk-7-jre"]],
   }
 
   file { 'snooze_node.cfg':
