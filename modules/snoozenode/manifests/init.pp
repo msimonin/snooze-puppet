@@ -45,7 +45,7 @@ class snoozenode(
 
   group { 'libvirt':
     ensure    => "present",
-              require  => Package["libvirt-bin"]
+    require  => Package["libvirt-bin"]
   }
 
   file { 'snoozeadmin-sudoers':
