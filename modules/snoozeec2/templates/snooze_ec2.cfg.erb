@@ -1,0 +1,29 @@
+################ Networking ####################
+## Listen address (default: listen on all interfaces)
+network.listen.address = <%= @listenAddress %>
+
+## Control
+network.listen.port = <%= @listenPort %>
+
+############### Images repository ##############
+## Address
+imageRepository.address = <%= @imageRepositoryAddress %>
+
+## Port
+imageRepository.port = <%= @imageRepositoryPort %>
+
+
+############### Bootstraps ####################
+## bootstrap addresses (coma separated list)
+# Address
+bootstrap.address = <%= @bootstrapAddress %>
+
+## Port
+bootstrap.port = <%= @bootstrapPort %>
+
+############### Context Path ##################
+##
+
+config.ec2.package.contextpath = com.amazonaws.ec2.doc._2013_10_01
+
+

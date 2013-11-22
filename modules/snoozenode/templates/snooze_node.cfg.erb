@@ -81,6 +81,17 @@ faultTolerance.heartbeat.timeout = 10000
 imageRepository.address = <%= zookeeperHosts.first %>
 imageRepository.port = 4000
 
+
+# How the image are stored on local controller
+# # Supported types 
+# # backing : master on shared storage, backing local.
+# # localBacking : master + slave on node.
+#
+imageRepository.manager.disks = backing
+
+imageRepository.manager.source = <%= @imageRepositorySource %> 
+imageRepository.manager.destination = <%= @imageRepositoryDestination %>
+
 ################## Database ####################
 # Database type (only in-memory supported for now)
 database.type = <%= @databaseType %>
@@ -212,3 +223,23 @@ energyManagement.thresholds.wakeupTime = <%= @energyManagementThresholdsWakeupTi
 
 # The power management command execution timeout (= sec)
 energyManagement.commandExecutionTimeout = 10
+
+################### Provisioner ########################
+# contextualization disk bus
+provisioner.contextDisk.bus = ide
+provisioner.contextDisk.dev = hdc
+provisioner.contextDisk.name = context.iso
+
+# bus for primary disk
+provisioner.disk.bus = virtio
+provisioner.disk.dev = vda
+
+# Enable a serial console fort the guest.
+provisioner.serial.enable = true
+
+# Enable a vcn console for the guest.
+provisioner.vnc.enable = <%= @enableVnc %>
+provisioner.vnc.listenAddress = 0.0.0.0
+provisioner.vnc.startPort = 8000
+provisioner.vnc.portRange = 1000
+provisioner.vnc.keymap = fr

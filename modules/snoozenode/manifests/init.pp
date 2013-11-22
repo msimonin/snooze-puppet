@@ -13,13 +13,16 @@ class snoozenode(
     $migrationTimeout                     = 60,
     $groupManagerSchedulerPluginsDirectory= "/usr/share/snoozenode/plugins/groupManagerScheduler",
     $placementPolicy                      = "RandomScheduling",
+    $imageRepositorySource                = "/var/lib/libvirt/snoozeimages",
+    $imageRepositoryDestination           = "/var/lib/libvirt/images",
     $reconfigurationEnabled               = false,
     $reconfigurationPolicy                = "Sercon",
     $reconfigurationInterval              = "0 0/1 *  * * ?",
     $energyManagementEnabled              = false,
     $energyManagementIdleTime             = 120,
     $energyManagementPowerSavingAction    = "suspendToRam",
-    $energyManagementThresholdsWakeupTime = 300
+    $energyManagementThresholdsWakeupTime = 300,
+    $enableVnc                            = false 
     )
 {
 
@@ -32,8 +35,8 @@ class snoozenode(
   }
 
   user { 'snoozeadmin':
-    ensure => "present",
-    uid    => 32000,
+    ensure  => "present",
+    uid     => 32000,
     groups  => ["snooze", "libvirt"],
     require => [Group["snooze"],Group["libvirt"]]
   }
@@ -44,17 +47,17 @@ class snoozenode(
   }
 
   group { 'libvirt':
-    ensure    => "present",
-    require  => Package["libvirt-bin"]
+    ensure  => "present",
+    require => Package["libvirt-bin"]
   }
 
   file { 'snoozeadmin-sudoers':
-    path    => '/etc/sudoers.d/snoozeadmin',
-    ensure  => file,
-    owner   => "root",
-    group   => "root",
-    mode  => '0440',
-    source  => "puppet:///modules/snoozenode/etc/sudoers.d/snoozeadmin",
+    path   => '/etc/sudoers.d/snoozeadmin',
+    ensure => file,
+    owner  => "root",
+    group  => "root",
+    mode   => '0440',
+    source => "puppet:///modules/snoozenode/etc/sudoers.d/snoozeadmin",
   }
 
 
@@ -73,8 +76,8 @@ class snoozenode(
 
   package { 'snoozenode':
     provider => dpkg,
-    source  => "/opt/snoozenode/snoozenode.deb",
-    require => [File["/opt/snoozenode/snoozenode.deb"],Package["openjdk-7-jre"]],
+    source   => "/opt/snoozenode/snoozenode.deb",
+    require  => [File["/opt/snoozenode/snoozenode.deb"],Package["openjdk-7-jre"]],
   }
 
   file { 'snooze_node.cfg':
@@ -82,7 +85,7 @@ class snoozenode(
     ensure  => file,
     owner   => "root",
     group   => "root",
-    mode  => '0644',
+    mode    => '0644',
     content => template("snoozenode/snooze_node.cfg.erb"),
     require => Package["snoozenode"],
   }
