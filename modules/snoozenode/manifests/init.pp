@@ -4,11 +4,11 @@ class snoozenode(
     $listenAddress                        = "localhost",
     $multicastAddress                     = "225.4.5.6",
     $groupManagerHeartbeatPort            = 9000,
-    $zookeeperHosts                       = "localhost",
-    $virtualMachineSubnet                 = "192.168.122.0/24",
+    $zookeeperHosts                       = ["localhost"],
+    $virtualMachineSubnet                 = ["192.168.122.0/24"],
     $externalNotificationHost             = "localhost",
     $databaseType                         = "memory",
-    $databaseCassandraHosts               = "localhost:9160",
+    $databaseCassandraHosts               = ["localhost"],
     $migrationMethod                      = "live",
     $migrationTimeout                     = 60,
     $groupManagerSchedulerPluginsDirectory= "/usr/share/snoozenode/plugins/groupManagerScheduler",
@@ -50,6 +50,19 @@ class snoozenode(
     ensure  => "present",
     require => Package["libvirt-bin"]
   }
+
+  exec { $imageRepositoryDestination:
+    command => "mkdir -p $imageRepositoryDestination",
+    path    => "/bin"
+  }
+
+  file { $imageRepositoryDestination:
+    ensure  => directory,
+    owner   => "snoozeadmin",
+    group   => "snooze",
+    require => Exec[$imageRepositoryDestination]
+  }
+
 
   file { 'snoozeadmin-sudoers':
     path   => '/etc/sudoers.d/snoozeadmin',

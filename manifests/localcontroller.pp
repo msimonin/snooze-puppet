@@ -1,18 +1,15 @@
- import "./common.pp"
-
-$groupManagerHeartbeatPort = 1000+$idfromhost
+include "kadeploy3"
+include "snoozeclient"
 
 class { 
   'snoozenode':
-    type                      => "localcontroller",
-    controlDataPort           => 5000,
-    listenAddress             => $ipaddress,
-    multicastAddress          => "225.4.5.16",
-    groupManagerHeartbeatPort => $groupManagerHeartbeatPort,
-		zookeeperHosts            => ["10.0.0.2"],
-		virtualMachineSubnet      => ["10.0.1.0/24"],
+    type                                 => "localcontroller",
 }
 
 
+exec { 'apt-update':
+  command => 'apt-get update',
+  path    => '/usr/bin'
+}
 
-
+Exec['apt-update'] -> Class['snoozenode']
