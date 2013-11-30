@@ -11,6 +11,8 @@ class snoozenode(
     $databaseCassandraHosts               = ["localhost"],
     $migrationMethod                      = "live",
     $migrationTimeout                     = 60,
+    $numberOfEntriesPerGroupManager       = 20,
+    $numberOfEntriesPerVirtualMachine     = 30,
     $groupManagerSchedulerPluginsDirectory= "/usr/share/snoozenode/plugins/groupManagerScheduler",
     $placementPolicy                      = "RandomScheduling",
     $imageRepositorySource                = "/var/lib/libvirt/snoozeimages",

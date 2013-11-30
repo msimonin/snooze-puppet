@@ -99,10 +99,10 @@ database.type = <%= @databaseType %>
 database.cassandra.hosts = <% @databaseCassandraHosts.each do |server| -%> <%= server %>:9160, <% end -%>
 
 # Maximum number of monitoring entries to keep per group manager
-database.numberOfEntriesPerGroupManager = 20
+database.numberOfEntriesPerGroupManager = <%= @numberOfEntriesPerGroupManager %> 
 
 # Maximum number of monitoring entries to keep per virtual machine
-database.numberOfEntriesPerVirtualMachine = 30
+database.numberOfEntriesPerVirtualMachine = <%= @numberOfEntriesPerVirtualMachine %>
 
 ################### Monitoring #################
 # Monitoring information probing interval (= ms)
