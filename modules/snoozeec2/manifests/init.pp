@@ -27,7 +27,7 @@ class snoozeec2(
   }
 
   file { 'snooze_ec2.cfg':
-    path    => '/usr/share/snoozenode/configs/snooze_ec2.cfg',
+    path    => '/usr/share/snoozeec2/configs/snooze_ec2.cfg',
     ensure  => file,
     owner   => "root",
     group   => "root",
