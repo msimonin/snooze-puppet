@@ -1,0 +1,16 @@
+################ Networking ####################
+## Listen address (default: listen on all interfaces)
+network.listen.address = <%= @listenAddress %>
+
+## Control
+network.listen.controlDataPort = <%= @listenPort %>
+
+############## Repository backend #################
+## Backend
+repository.type = <%= @repositoryType || "libvirt" %>
+
+repository.libvirt.address = <% @libvirtRepository["address"] || "localhost" %>
+repository.libvirt.port = <%= @libvirtRepository["port"] || "16509"  %>
+repository.libvirt.hypervisor = <%= @libvirtRepository["hypervisor"] || "qemu" %>
+repository.libvirt.transport = <%= @libvirtRepository["transport"] || "tcp" %>
+repository.libvirt.pool = <%= @libvirtRepository["pool"] || "default" %>
