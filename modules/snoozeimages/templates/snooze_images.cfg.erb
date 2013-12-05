@@ -13,4 +13,4 @@ repository.libvirt.address = <% @libvirtRepository["address"] || "localhost" %>
 repository.libvirt.port = <%= @libvirtRepository["port"] || "16509"  %>
 repository.libvirt.hypervisor = <%= @libvirtRepository["hypervisor"] || "qemu" %>
 repository.libvirt.transport = <%= @libvirtRepository["transport"] || "tcp" %>
-repository.libvirt.pool = <%= @libvirtRepository["pool"] || "default" %>
+repository.libvirt.pool = <%= @libvirtRepository["pool"] ||  @libvirtPool["name"] %>

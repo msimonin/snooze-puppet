@@ -3,6 +3,7 @@ class snoozeimages(
   $listenPort        = '4000',
   $repositoryType    = 'libvirt',
   $libvirtRepository = {},
+  $libvirtPool       = {'name' => 'snooze', 'type' => 'dir', 'target' => '/tmp/snooze/images'},
   $snoozeimagesUser  = 'snoozeimagesadmin',
   $snoozeimagesGroup = 'snoozeimages'
 ){
@@ -59,6 +60,12 @@ class snoozeimages(
     mode    => '0744',
     content => template('snoozeimages/snoozeimages.initd.erb'),
     require => Package['snoozeimages']
+  }
+
+  libvirt_pool{ $libvirtPool['name']:
+    ensure => active,
+    type   => $libvirtPool['type'],
+    target => $libvirtPool['target']
   }
 
 }

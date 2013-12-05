@@ -62,7 +62,7 @@ class snoozenode(
     ensure  => directory,
     owner   => "snoozeadmin",
     group   => "snooze",
-    require => Exec[$imageRepositoryDestination]
+    require => [Exec[$imageRepositoryDestination], User['snoozeadmin'], Group['snooze']]
   }
 
 
