@@ -15,6 +15,7 @@ class snoozenode(
     $numberOfEntriesPerVirtualMachine     = 30,
     $groupManagerSchedulerPluginsDirectory= "/usr/share/snoozenode/plugins/groupManagerScheduler",
     $placementPolicy                      = "RandomScheduling",
+    $imageRepositoryDiskPolicy            = "backing",
     $imageRepositorySource                = "/var/lib/libvirt/snoozeimages",
     $imageRepositoryDestination           = "/var/lib/libvirt/images",
     $reconfigurationEnabled               = false,

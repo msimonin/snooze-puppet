@@ -87,7 +87,7 @@ imageRepository.port = 4000
 # # backing : master on shared storage, backing local.
 # # localBacking : master + slave on node.
 #
-imageRepository.manager.disks = backing
+imageRepository.manager.disks = <%= @imageRepositoryDiskPolicy %>
 
 imageRepository.manager.source = <%= @imageRepositorySource %> 
 imageRepository.manager.destination = <%= @imageRepositoryDestination %>
