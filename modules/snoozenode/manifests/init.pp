@@ -2,6 +2,7 @@ class snoozenode(
     $type                                 = "bootstrap",
     $controlDataPort                      = 5000,
     $listenAddress                        = "localhost",
+    $httpMaxIoIdleTimeMs                  = "60000",
     $multicastAddress                     = "225.4.5.6",
     $groupManagerHeartbeatPort            = 9000,
     $zookeeperHosts                       = ["localhost"],
