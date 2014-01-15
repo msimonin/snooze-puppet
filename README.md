@@ -19,13 +19,6 @@ class {
 
 ```
 
-This will install kadeploy3 on your node : 
-
-```puppet
-include 'kadeploy3'
-```
-
-
 This will install ``snoozeec2`` and ``snoozeimages`` on the same node : 
 
 ```puppet
