@@ -1,38 +1,69 @@
 class snoozenode(
-    $type                                 = "bootstrap",
-    $controlDataPort                      = 5000,
-    $listenAddress                        = "localhost",
-    $httpMaxIoIdleTimeMs                  = "60000",
-    $multicastAddress                     = "225.4.5.6",
-    $groupManagerHeartbeatPort            = 9000,
-    $zookeeperHosts                       = ["localhost"],
-    $virtualMachineSubnet                 = ["192.168.122.0/24"],
-    $externalNotificationHost             = "localhost",
-    $databaseType                         = "memory",
-    $databaseCassandraHosts               = ["localhost"],
-    $migrationMethod                      = "live",
-    $migrationTimeout                     = 60,
-    $numberOfEntriesPerGroupManager       = 20,
-    $numberOfEntriesPerVirtualMachine     = 30,
-    $groupManagerSchedulerPluginsDirectory= "/usr/share/snoozenode/plugins/groupManagerScheduler",
-    $placementPolicy                      = "RandomScheduling",
-    $imageRepositoryDiskPolicy            = "backing",
-    $imageRepositorySource                = "/var/lib/libvirt/snoozeimages",
-    $imageRepositoryDestination           = "/var/lib/libvirt/images",
-    $reconfigurationEnabled               = false,
-    $reconfigurationPolicy                = "Sercon",
-    $reconfigurationInterval              = "0 0/1 *  * * ?",
-    $energyManagementEnabled              = false,
-    $energyManagementIdleTime             = 120,
-    $energyManagementPowerSavingAction    = "suspendToRam",
-    $energyManagementThresholdsWakeupTime = 300,
-    $enableVnc                            = false 
+    $type                                  = "bootstrap",
+    $idGenerator                           = "shortname",
+    $controlDataPort                       = 5000,
+    $listenAddress                         = "localhost",
+    $httpMaxIoIdleTimeMs                   = "60000",
+    $multicastAddress                      = "225.4.5.6",
+    $groupManagerHeartbeatPort             = 9000,
+    $zookeeperHosts                        = ["localhost"],
+    $virtualMachineSubnet                  = ["192.168.122.0/24"],
+    $externalNotificationHost              = "localhost",
+    $databaseType                          = "memory",
+    $databaseCassandraHosts                = ["localhost"],
+    $migrationMethod                       = "live",
+    $migrationTimeout                      = 60,
+    $numberOfEntriesPerGroupManager        = 20,
+    $numberOfEntriesPerVirtualMachine      = 30,
+    $groupManagerSchedulerPluginsDirectory = "/usr/share/snoozenode/plugins/groupManagerScheduler",
+    $placementPolicy                       = "RandomScheduling",
+    $imageRepositoryDiskPolicy             = "backing",
+    $imageRepositorySource                 = "/var/lib/libvirt/snoozeimages",
+    $imageRepositoryDestination            = "/var/lib/libvirt/images",
+    $reconfigurationEnabled                = false,
+    $reconfigurationPolicy                 = "Sercon",
+    $reconfigurationInterval               = "0 0/1 *  * * ?",
+    $energyManagementEnabled               = false,
+    $energyManagementIdleTime              = 120,
+    $energyManagementPowerSavingAction     = "suspendToRam",
+    $energyManagementThresholdsWakeupTime  = 300,
+    $enableVnc                             = false,
+    $estimatorStatic                       = true,
+    $cpuThresholds                         = "0,1,1",
+    $memoryThresholds                      = "0,1,1",
+    $networkThresholds                     = "0,1,1",
     )
 {
 
   require 'java'
   require 'libvirt'
   require 'zookeeper'
+
+  if ($ganglia){
+    
+    $udp_recv_channel = [
+      { port       => 8649, bind => 'localhost' }
+    ]
+
+    $udp_send_channel = []
+
+    $tcp_accept_channel = [
+      { port => 8649 },
+    ]
+
+    class{ 'ganglia::gmond':
+      cluster_name       => 'Snooze',
+      cluster_owner      => 'Snooze',
+      cluster_url        => 'http:/:/snooze.inria.fr',
+      host_location      => 'grid5000',
+      udp_recv_channel   => $udp_recv_channel,
+      udp_send_channel   => $udp_send_channel,
+      tcp_accept_channel => $tcp_accept_channel,
+    }
+
+  }
+
+
 
   package { 'pm-utils':
     ensure => "installed"
