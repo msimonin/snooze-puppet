@@ -1,5 +1,6 @@
 class snoozenode(
     $type                                 = "bootstrap",
+    $idGenerator                          = "random",
     $controlDataPort                      = 5000,
     $listenAddress                        = "localhost",
     $httpMaxIoIdleTimeMs                  = "60000",
