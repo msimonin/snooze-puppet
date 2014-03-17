@@ -115,9 +115,9 @@ monitoring.timeout = 20000
 monitoring.numberOfMonitoringEntries = 10
 
 # The CPU, memory, and network utilization thresholds (MIN, MID, MAX) (= %)
-monitoring.thresholds.cpu = 0, 1, 1
-monitoring.thresholds.memory = 0, 1, 1
-monitoring.thresholds.network = 0, 1, 1
+monitoring.thresholds.cpu = <%= @cpuThresholds %>
+monitoring.thresholds.memory = <%= @memoryThresholds %>
+monitoring.thresholds.network = <%= @networkThresholds %>
 
 # External monitoring
 external.notifier.transport = RABBITMQ
@@ -132,7 +132,7 @@ external.notifier.faultTolerance.retryInterval = 10
 
 ################## Estimator ##################
 # Enables/disables static estimation (i.e. based on requested capacity only)
-estimator.static = true
+estimator.static = <%= @estimatorStatic %>
 
 # The sort norm (L1, Euclid, Max)
 estimator.sortNorm = L1

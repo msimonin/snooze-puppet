@@ -26,7 +26,11 @@ class snoozenode(
     $energyManagementIdleTime             = 120,
     $energyManagementPowerSavingAction    = "suspendToRam",
     $energyManagementThresholdsWakeupTime = 300,
-    $enableVnc                            = false 
+    $enableVnc                            = false,
+    $estimatorStatic                      = false,
+    $cpuThresholds                        = "0,1,1",
+    $memoryThresholds                     = "0,1,1",
+    $networkThresholds                    = "0,1,1",
     )
 {
 
