@@ -123,13 +123,12 @@ monitoring.numberOfMonitoringEntries = 10
 
 
 # The CPU, memory, and network utilization thresholds (MIN, MID, MAX) (= %)
-monitoring.thresholds.cpu = 0, 1, 1
+monitoring.thresholds.cpu = <%= @cpuThresholds %>
 monitoring.estimator.cpu = average
-monitoring.thresholds.memory = 0, 1, 1
+monitoring.thresholds.memory = <%= @memoryThresholds %>
 monitoring.estimator.memory = average
-monitoring.thresholds.network = 0, 1, 1
+monitoring.thresholds.network = <%= @netwotkThresholds %>
 monitoring.estimator.network = average
-
 
 # External monitoring
 external.notifier.transport = RABBITMQ
