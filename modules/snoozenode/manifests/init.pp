@@ -1,4 +1,5 @@
 class snoozenode(
+    $version                               = 2,
     $type                                  = "bootstrap",
     $idGenerator                           = "shortname",
     $controlDataPort                       = 5000,
@@ -129,12 +130,12 @@ class snoozenode(
   }
 
   file { 'snooze_node.cfg':
-    path    => '/usr/share/snoozenode/configs/snooze_node.cfg',
     ensure  => file,
-    owner   => "root",
-    group   => "root",
+    path    => '/usr/share/snoozenode/configs/snooze_node.cfg',
+    owner   => 'root',
+    group   => 'root',
     mode    => '0644',
-    content => template("snoozenode/snooze_node.cfg.erb"),
+    content => template("snoozenode/snooze_node.cfg.erb.${version}"),
     require => Package["snoozenode"],
   }
 
